@@ -1,0 +1,60 @@
+:root {
+    --color-1:#2b8b7f;
+    --color-2:#dfb228;
+    --color-3:#809ea1;
+    --color-4:#fff0db;
+    --color-5:#ffff;
+}
+
+body{
+    background-color:var(--color-4);
+}
+
+header{
+    /* box model */
+    padding: 0.5vh;
+    border-bottom:1vh solid var(--color-2);
+    background-color:var(--color-1);
+    /* text properties */
+    color:var(--color-5);
+    font-size:125%;
+    font-style:italic;
+    text-align:center;
+}
+
+main{
+    display:flex;
+}
+
+h1,h2,h3{
+    /* text properties */
+    font-family: 'Raleway', sans-serif;
+}
+
+aside{
+    /* flexbox */
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    /* box model */
+    margin:1vh 5vh;
+}
+
+form{
+    /* flexbox */
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+button{
+    /* text properties */
+    color:var(--color-5);
+    font-weight:bold;
+    /* background color */
+    background-color:var(--color-1);
+    /* box model */
+    border:0px;
+    border-radius:2.5vh;
+    padding:0.5vh 5vh;
+}
