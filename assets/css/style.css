@@ -1,7 +1,7 @@
 :root {
     --color-1:#2b8b7f;
     --color-2:#dfb228;
-    --color-3:#809ea1;
+    --color-3:#f2e0a9;
     --color-4:#fff0db;
     --color-5:#ffff;
 }
@@ -17,7 +17,7 @@ header{
     background-color:var(--color-1);
     /* text properties */
     color:var(--color-5);
-    font-size:125%;
+    font-size:215%;
     font-style:italic;
     text-align:center;
 }
@@ -31,30 +31,68 @@ h1,h2,h3{
     font-family: 'Raleway', sans-serif;
 }
 
+h2{
+    font-size:150%;
+}
+
 aside{
     /* flexbox */
     display:flex;
     flex-direction:column;
     align-items:flex-start;
     /* box model */
-    margin:1vh 5vh;
+    margin:1vh 3vh;
 }
 
 form{
+    /*box model*/
+    margin:1vh;
     /* flexbox */
     display:flex;
     flex-direction:column;
     justify-content:center;
+    /* text properties */
+    font-family:sans-serif;
+}
+
+input{
+    border-bottom:0.25vh solid var(--color-2);
+    height:5vh;
 }
 
 button{
     /* text properties */
     color:var(--color-5);
-    font-weight:bold;
+    text-align:center;
+    font-family:sans-serif;
     /* background color */
     background-color:var(--color-1);
     /* box model */
     border:0px;
     border-radius:2.5vh;
     padding:0.5vh 5vh;
+}
+
+h3 {
+    font-size:125%;
+}
+
+.card{
+    background-color:var(--color-3);
+    border-radius:2.5vh;
+    height:25vh;
+    width:100vh;
+    margin:0.5vh
+}
+
+#weather{
+    /* box model */
+    margin:1vh 3vh;
+}
+
+#five-days{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    flex-wrap:wrap;
 }
