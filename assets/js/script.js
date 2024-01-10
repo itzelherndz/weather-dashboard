@@ -19,7 +19,7 @@ $(function (){
             cityBtn.div[i].addClass('row');
             cityBtn.btn[i] = $('<button>');
             cityBtn.btn[i].text(JSON.parse(localStorage.getItem('city'+i)));
-            cityBtn.btn[i].addClass('btn btn-outline-secondary');
+            cityBtn.btn[i].addClass('btn btn-warning custom-button');
             cityBtn.btn[i].attr('type','button');
             cityHistory.append(cityBtn.div[i]);
             cityBtn.div[i].append(cityBtn.btn[i]);
@@ -41,7 +41,7 @@ $(function (){
 
     // Get latitude and longitude from city query
     function getGeocode(city) {
-        const requestUrl= 'http://api.openweathermap.org/geo/1.0/direct?q='+city+'&limit=5&appid=4a3078e250edd66b3fd95a4671c5608b';
+        const requestUrl= 'http://api.openweathermap.org/geo/1.0/direct?q='+city+'&limit=5&appid='+config.key;
 
         fetch (requestUrl)
             .then(function (response){
@@ -61,7 +61,7 @@ $(function (){
     // Get current weather from latitude and longitude
     function getWeather(){
         const requestUrl='https://api.openweathermap.org/data/2.5/weather?lat='+
-        JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&units=imperial&appid=4a3078e250edd66b3fd95a4671c5608b';
+        JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&units=imperial&appid='+config.key;
 
         fetch (requestUrl)
             .then(function (response){
@@ -88,7 +88,7 @@ $(function (){
 
     function getForecast(){
         const requestUrl='https://api.openweathermap.org/data/2.5/forecast?lat='+
-        JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&units=imperial&appid=4a3078e250edd66b3fd95a4671c5608b';
+        JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&units=imperial&appid='+config.key;
 
         fetch (requestUrl)
             .then(function (response){
@@ -97,7 +97,7 @@ $(function (){
             .then(function(data){
                 //Five day forecast
                 for(let i=0;i<5;i++){
-                    $('#day-'+i).html('<h4 class="text-center">'+dayjs(data.list[8*i].dt_txt).format('MMM D HH')+'</h4>'
+                    $('#day-'+i).html('<h4 class="text-center">'+dayjs(data.list[8*i].dt_txt).format('MMM D')+'</h4>'
                     +'<img src="https://openweathermap.org/img/wn/'+data.list[(i*8)].weather[0].icon+'@2x.png" alt="weather image"/>'
                     +'<p>Temp: '+data.list[8*i].main.temp+'°F</p>'
                     +'<p>Wind: '+data.list[8*i].wind.speed+' mi/hr</p>'

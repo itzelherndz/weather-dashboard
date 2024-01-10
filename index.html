@@ -4,25 +4,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Weather Dashboard</title>
-        <!-- <link rel="stylesheet" href="./assets/css/reset.css"> -->
-        <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/css/style.css">
     </head>
     <body>
-        <div class="row">
+        <div class="row custom-heading">
             <h1 class="text-center">Weather Dashboard</h1>
         </div>
         <div class="row">
             <div class="col-3">
                 <h3>Search for a City:</h3>
                 <div class="form mb-3">
-                    <input type="search" placeholder="City, State" class="form-control" id="city">
+                    <input type="search" placeholder="City" class="form-control" id="city">
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-outline-primary" id="search-btn">Search</button>
+                    <button type="submit" class="btn btn-secondary" id="search-btn">Search</button>
                 </div>
                 <div id="city-history">
                     <h3>Search History:</h3>
@@ -32,9 +28,9 @@
                 <div class="row" id="today-weather">
                     <h2>Current Weather</h2>
                 </div>
-                <div class="row" id="forecast">
+                <div class="row">
                     <h3>Five-Day Forecast</h3>
-                    <div class="row" id="five-days">
+                    <div class="row">
                         <div class="col-2" id="day-0"></div>
                         <div class="col-2" id="day-1"></div>
                         <div class="col-2" id="day-2"></div>
@@ -46,6 +42,7 @@
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js" integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+        <script src="./assets/js/config.js"></script>
         <script src="./assets/js/script.js"></script>
     </body>
 </html>
