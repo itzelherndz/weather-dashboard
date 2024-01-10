@@ -16,20 +16,20 @@
             <h1 class="text-center">Weather Dashboard</h1>
         </div>
         <div class="row">
-            <div class="col-4">
-                <div class="form-floating mb-3">
+            <div class="col-2">
+                <h3>Search for a City:</h3>
+                <div class="form mb-3">
                     <input type="search" class="form-control" id="city">
-                    <label for="city">Search for a City</label>
                 </div>
-                <div class="">
-                    <button type="submit" class="btn btn-outline-primary">Search</button>
+                <div>
+                    <button type="submit" class="btn btn-outline-primary" id="search-btn">Search</button>
                 </div>
-                <div id="city-history"></div>
+                <div id="city-history">
+                    <h3>Search History:</h3>
                 </div>
-            <div class="col-8" id="weather">
-                <div class="row" id="today-weather">
-                    <h2>Today's Weather</h2>
-                </div>
+            </div>
+            <div class="col-10" id="weather">
+                <div class="row" id="today-weather"></div>
                 <div class="row" id="forecast">
                     <h3>Five-Day Forecast</h3>
                     <div class="row" id="five-days">
@@ -42,6 +42,8 @@
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js" integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+        <script src="./assets/js/script.js"></script>
     </body>
 </html>
