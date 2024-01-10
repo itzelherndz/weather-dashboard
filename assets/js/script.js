@@ -1,15 +1,3 @@
-//Conversion from Kelvin to Ferenheit
-function tempF (kelvin){
-    let ferenheit = (kelvin-273.15)*(9/5)+32;
-    return ferenheit.toFixed(2);
-}
-
-//Conversion from meters/sec to miles/hour
-function windMi (meters){
-    let miles = meters*2.2369;
-    return miles.toFixed(2);
-}
-
 $(function (){
     // Document Variables
     const cityEl = $('#city');
@@ -51,44 +39,64 @@ $(function (){
                 localStorage.setItem('lat',data[0].lat);
                 localStorage.setItem('lon',data[0].lon);
                 
-                // Initiate function to get today's weather
+                // Initiate functions to get weather
                 getWeather();
+                getForecast();
             });
     }
 
     // Get current weather from latitude and longitude
     function getWeather(){
-        const requestUrl='https://api.openweathermap.org/data/2.5/weather?lat='+JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&appid=4a3078e250edd66b3fd95a4671c5608b';
+        const requestUrl='https://api.openweathermap.org/data/2.5/weather?lat='+
+        JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&units=imperial&appid=4a3078e250edd66b3fd95a4671c5608b';
 
         fetch (requestUrl)
             .then(function (response){
                 return response.json();
             })
             .then(function(data){
-                //Saving data
-                let temp=tempF(data.main.temp);
-                localStorage.setItem('weather-temp',temp);
-                let wind=windMi(data.wind.speed);
-                localStorage.setItem('weather-wind',wind);
-                localStorage.setItem('weather-humidity',data.main.humidity);
-
                 //Today's weather
-                tempToday=$('<p>');
-                tempToday.text('Temperature: '+JSON.parse(localStorage.getItem('weather-temp'))+'°F');
-                windToday=$('<p>');
-                windToday.text('Wind: '+JSON.parse(localStorage.getItem('weather-wind'))+' mi/hr');
-                humidityToday=$('<p>');
-                humidityToday.text('Humidity: '+JSON.parse(localStorage.getItem('weather-humidity'))+'%');
-                todayDiv=$('<div>');
+                let iconToday=$('<img>');
+                iconToday.attr('src','https://openweathermap.org/img/wn/'+data.weather[0].icon+'@2x.png');
+                let tempToday=$('<p>');
+                tempToday.text('Temperature: '+data.main.temp+'°F');
+                let windToday=$('<p>');
+                windToday.text('Wind: '+data.wind.speed+' mi/hr');
+                let humidityToday=$('<p>');
+                humidityToday.text('Humidity: '+data.main.humidity+'%');
+                let todayDiv=$('<div>');
                 weatherToday.append(todayDiv);
+                todayDiv.append(iconToday);
                 todayDiv.append(tempToday);
                 todayDiv.append(windToday);
                 todayDiv.append(humidityToday);
             });
     }
 
+    function getForecast(){
+        const requestUrl='https://api.openweathermap.org/data/2.5/forecast?lat='+
+        JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&units=imperial&appid=4a3078e250edd66b3fd95a4671c5608b';
+
+        fetch (requestUrl)
+            .then(function (response){
+                return response.json();
+            })
+            .then(function(data){
+                //Five day forecast
+                for(let i=0;i<5;i++){
+                    $('#day-'+i).html('<h4 class="text-center">'+dayjs(data.list[8*i].dt_txt).format('MMM D HH')+'</h4>'
+                    +'<img src="https://openweathermap.org/img/wn/'+data.list[(i*8)].weather[0].icon+'@2x.png" alt="weather image"/>'
+                    +'<p>Temp: '+data.list[8*i].main.temp+'°F</p>'
+                    +'<p>Wind: '+data.list[8*i].wind.speed+' mi/hr</p>'
+                    +'<p>Humidity: '+data.list[8*i].main.humidity+'%</p>');
+                }
+            });
+    }
+
     // Search button event listner
-    searchBtn.on('click',function(event){
+    searchBtn.on('click',searchFunction());
+
+    function searchFunction(event){
         event.preventDefault();
 
         // Loads query when filled out
@@ -117,12 +125,12 @@ $(function (){
             //Fetch City
             getGeocode(cityEl.val());
 
-            // Today's Weather Heading
-            weatherToday.html("<h2>Today's Weather in "+cityEl.val()+"</h2>");
+            // Headings
+            weatherToday.html("<h2>Current Weather in "+cityEl.val()+"</h2> <h4>"+dayjs().format('dddd, MMMM D, YYYY')+"</h4>");
 
             // Clears query in search bar
             cityEl.val('');
         }
 
-    });
+    }
 });
