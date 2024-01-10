@@ -23,7 +23,20 @@ $(function (){
             cityBtn.btn[i].attr('type','button');
             cityHistory.append(cityBtn.div[i]);
             cityBtn.div[i].append(cityBtn.btn[i]);
+
+            cityBtn.btn[i].on('click',function(){
+                //Fetch Data
+                getGeocode(cityBtn.btn[i].text());
+                // Headings
+                weatherToday.html("<h2>Current Weather in "+cityBtn.btn[i].text()+"</h2> <h4>"+dayjs().format('dddd, MMMM D, YYYY')+"</h4>");
+            });
         }
+        //Fetch Data
+        getGeocode(JSON.parse(localStorage.getItem('city'+counter)));
+
+        // Headings
+        weatherToday.html("<h2>Current Weather in "+JSON.parse(localStorage.getItem('city'+counter))+"</h2> <h4>"+dayjs().format('dddd, MMMM D, YYYY')+"</h4>");
+        
     }
 
     // Get latitude and longitude from city query
@@ -94,9 +107,7 @@ $(function (){
     }
 
     // Search button event listner
-    searchBtn.on('click',searchFunction());
-
-    function searchFunction(event){
+    searchBtn.on('click',function (event){
         event.preventDefault();
 
         // Loads query when filled out
@@ -122,15 +133,9 @@ $(function (){
             cityHistory.append(cityBtn.div[counter]);
             cityBtn.div[counter].append(cityBtn.btn[counter]);
 
-            //Fetch City
-            getGeocode(cityEl.val());
-
-            // Headings
-            weatherToday.html("<h2>Current Weather in "+cityEl.val()+"</h2> <h4>"+dayjs().format('dddd, MMMM D, YYYY')+"</h4>");
-
-            // Clears query in search bar
-            cityEl.val('');
+            // Reload Page
+            location.reload();
         }
 
-    }
+    });
 });
