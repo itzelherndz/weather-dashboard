@@ -26,6 +26,21 @@ $(function (){
         }
     }
 
+    // Get latitude and longitude from city query
+    function getGeocode(city) {
+        const requestUrl= 'http://api.openweathermap.org/geo/1.0/direct?q='+city+'&limit=5&appid=4a3078e250edd66b3fd95a4671c5608b';
+
+        fetch (requestUrl)
+            .then(function (response){
+                return response.json();
+            })
+            .then(function(data){
+                localStorage.setItem('lat',data[0].lat);
+                localStorage.setItem('lon',data[0].lon);
+            });
+    }
+
+    // Search button event listner
     searchBtn.on('click',function(event){
         event.preventDefault();
 
@@ -52,9 +67,13 @@ $(function (){
             cityHistory.append(cityBtn.div[counter]);
             cityBtn.div[counter].append(cityBtn.btn[counter]);
 
+            //Fetch City
+            getGeocode(cityEl.val());
+
             // Today's Weather
             weatherToday.html("<h2>Today's Weather in "+cityEl.val()+"</h2>");
-            
+
+
             // Clears query in search bar
             cityEl.val('');
         }
