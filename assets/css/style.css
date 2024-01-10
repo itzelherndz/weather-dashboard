@@ -7,92 +7,16 @@
 }
 
 body{
-    background-color:var(--color-4);
-}
-
-header{
-    /* box model */
-    padding: 0.5vh;
-    border-bottom:1vh solid var(--color-2);
-    background-color:var(--color-1);
-    /* text properties */
-    color:var(--color-5);
-    font-size:215%;
-    font-style:italic;
-    text-align:center;
-}
-
-main{
-    display:flex;
-}
-
-h1,h2,h3{
-    /* text properties */
-    font-family: 'Raleway', sans-serif;
-}
-
-h2{
-    font-size:150%;
-}
-
-aside{
-    /* flexbox */
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    /* box model */
-    margin:1vh 3vh;
-}
-
-form{
-    /*box model*/
-    margin:1vh;
-    /* flexbox */
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    /* text properties */
-    font-family:sans-serif;
-}
-
-input{
-    border-bottom:0.25vh solid var(--color-2);
-    height:5vh;
-}
-
-button{
-    /* text properties */
-    color:var(--color-5);
-    text-align:center;
-    font-family:sans-serif;
-    /* background color */
-    background-color:var(--color-1);
-    /* box model */
-    border:0px;
-    border-radius:2.5vh;
-    padding:0.5vh 5vh;
-}
-
-h3 {
-    font-size:125%;
-}
-
-.card{
     background-color:var(--color-3);
-    border-radius:2.5vh;
-    height:25vh;
-    width:100vh;
-    margin:0.5vh
 }
 
-#weather{
-    /* box model */
-    margin:1vh 3vh;
+.custom-heading{
+    border-bottom:2vh solid var(--color-2);
+    background-color:var(--color-1);
+    /* text properties */
+    color: var(--color-5);
 }
 
-#five-days{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    flex-wrap:wrap;
+.custom-button{
+    margin:1vh 0;
 }
