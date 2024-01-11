@@ -1,6 +1,7 @@
 var myKey = KEY;
 
 $(function (){
+
     // Document Variables
     const cityEl = $('#city');
     const searchBtn = $('#search-btn');
