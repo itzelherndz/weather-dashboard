@@ -8,34 +8,48 @@
         <link rel="stylesheet" href="./assets/css/style.css">
     </head>
     <body>
+        <!-- header -->
         <div class="row custom-heading">
             <h1 class="text-center">Weather Dashboard</h1>
         </div>
+        <!-- main -->
         <div class="row">
-            <div class="col-3">
+            <!-- aside -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <!-- search bar -->
                 <h3>Search for a City:</h3>
                 <div class="form mb-3">
                     <input type="search" placeholder="City" class="form-control" id="city">
                 </div>
-                <div>
-                    <button type="submit" class="btn btn-secondary" id="search-btn">Search</button>
+                <div class="row">
+                    <button type="submit" class="btn btn-warning" id="search-btn">Search</button>
                 </div>
+                <!-- search history -->
                 <div id="city-history">
                     <h3>Search History:</h3>
                 </div>
             </div>
-            <div class="col-9" id="weather">
-                <div class="row" id="today-weather">
-                    <h2>Current Weather</h2>
+            <!-- weather -->
+            <div class="col-lg-9 col-md-9 col-sm-6" id="weather">
+                <!-- current weather -->
+                <div class="row">
+                    <div id="current-hdg">
+                        <h2>Current Weather</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6" id="today-icon"></div>
+                        <div class="col-xl-10 col-lg-10 col-md-9 col-sm-6" id="today-weather"></div>
+                    </div>
                 </div>
+                <!-- five day forecast -->
                 <div class="row">
                     <h3>Five-Day Forecast</h3>
                     <div class="row">
-                        <div class="col-2" id="day-0"></div>
-                        <div class="col-2" id="day-1"></div>
-                        <div class="col-2" id="day-2"></div>
-                        <div class="col-2" id="day-3"></div>
-                        <div class="col-2" id="day-4"></div>
+                        <div class="col-lg-2 col-md-2 col-sm-6 position-relative" id="day-0"></div>
+                        <div class="col-lg-2 col-md-2 col-sm-6 position-relative" id="day-1"></div>
+                        <div class="col-lg-2 col-md-2 col-sm-6 position-relative" id="day-2"></div>
+                        <div class="col-lg-2 col-md-2 col-sm-6 position-relative" id="day-3"></div>
+                        <div class="col-lg-2 col-md-2 col-sm-6 position-relative" id="day-4"></div>
                     </div>
                 </div>
             </div>

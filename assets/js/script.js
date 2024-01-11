@@ -4,6 +4,7 @@ $(function (){
     const searchBtn = $('#search-btn');
     const cityHistory = $('#city-history');
     const weatherToday = $('#today-weather');
+    const currentHdg = $('#current-hdg');
 
     // Counter to keep track of number of cities searched
     let counter;
@@ -28,14 +29,14 @@ $(function (){
                 //Fetch Data
                 getGeocode(cityBtn.btn[i].text());
                 // Headings
-                weatherToday.html("<h2>Current Weather in "+cityBtn.btn[i].text()+"</h2> <h4>"+dayjs().format('dddd, MMMM D, YYYY')+"</h4>");
+                currentHdg.html("<h2>Current Weather in "+cityBtn.btn[i].text()+"</h2> <h4>"+dayjs().format('dddd, MMMM D, YYYY')+"</h4>");
             });
         }
         //Fetch Data
         getGeocode(JSON.parse(localStorage.getItem('city'+counter)));
 
         // Headings
-        weatherToday.html("<h2>Current Weather in "+JSON.parse(localStorage.getItem('city'+counter))+"</h2> <h4>"+dayjs().format('dddd, MMMM D, YYYY')+"</h4>");
+        currentHdg.html("<h2>Current Weather in "+JSON.parse(localStorage.getItem('city'+counter))+"</h2> <h4>"+dayjs().format('dddd, MMMM D, YYYY')+"</h4>");
         
     }
 
@@ -69,20 +70,10 @@ $(function (){
             })
             .then(function(data){
                 //Today's weather
-                let iconToday=$('<img>');
-                iconToday.attr('src','https://openweathermap.org/img/wn/'+data.weather[0].icon+'@2x.png');
-                let tempToday=$('<p>');
-                tempToday.text('Temperature: '+data.main.temp+'°F');
-                let windToday=$('<p>');
-                windToday.text('Wind: '+data.wind.speed+' mi/hr');
-                let humidityToday=$('<p>');
-                humidityToday.text('Humidity: '+data.main.humidity+'%');
-                let todayDiv=$('<div>');
-                weatherToday.append(todayDiv);
-                todayDiv.append(iconToday);
-                todayDiv.append(tempToday);
-                todayDiv.append(windToday);
-                todayDiv.append(humidityToday);
+                $('#today-icon').html('<img src="https://openweathermap.org/img/wn/'+data.weather[0].icon+'@2x.png" alt="weather icon">');
+                weatherToday.html('<p>Temperature: '+data.main.temp+'°F</p>'
+                +'<p>Wind: '+data.wind.speed+' mi/hr</p>'
+                +'<p>Humidity: '+data.main.humidity+'%</p>');
             });
     }
 
@@ -98,10 +89,10 @@ $(function (){
                 //Five day forecast
                 for(let i=0;i<5;i++){
                     $('#day-'+i).html('<h4 class="text-center">'+dayjs(data.list[8*i].dt_txt).format('MMM D')+'</h4>'
-                    +'<img src="https://openweathermap.org/img/wn/'+data.list[(i*8)].weather[0].icon+'@2x.png" alt="weather image"/>'
-                    +'<p>Temp: '+data.list[8*i].main.temp+'°F</p>'
-                    +'<p>Wind: '+data.list[8*i].wind.speed+' mi/hr</p>'
-                    +'<p>Humidity: '+data.list[8*i].main.humidity+'%</p>');
+                    +'<img src="https://openweathermap.org/img/wn/'+data.list[(i*8)].weather[0].icon+'@2x.png" alt="weather image" class="position-relative top-25 start-50 translate-middle-x"/>'
+                    +'<p class="text-center">Temp: '+data.list[8*i].main.temp+'°F</p>'
+                    +'<p class="text-center">Wind: '+data.list[8*i].wind.speed+' mi/hr</p>'
+                    +'<p class="text-center">Humidity: '+data.list[8*i].main.humidity+'%</p>');
                 }
             });
     }
