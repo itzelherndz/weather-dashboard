@@ -42,7 +42,7 @@ $(function (){
 
     // Get latitude and longitude from city query
     function getGeocode(city) {
-        const requestUrl= 'http://api.openweathermap.org/geo/1.0/direct?q='+city+'&limit=5&appid='+config.key;
+        const requestUrl= 'http://api.openweathermap.org/geo/1.0/direct?q='+city+'&limit=5&appid='+KEY;
 
         fetch (requestUrl)
             .then(function (response){
@@ -62,7 +62,7 @@ $(function (){
     // Get current weather from latitude and longitude
     function getWeather(){
         const requestUrl='https://api.openweathermap.org/data/2.5/weather?lat='+
-        JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&units=imperial&appid='+config.key;
+        JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&units=imperial&appid='+KEY;
 
         fetch (requestUrl)
             .then(function (response){
@@ -79,7 +79,7 @@ $(function (){
 
     function getForecast(){
         const requestUrl='https://api.openweathermap.org/data/2.5/forecast?lat='+
-        JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&units=imperial&appid='+config.key;
+        JSON.parse(localStorage.getItem('lat'))+'&lon='+JSON.parse(localStorage.getItem('lon'))+'&units=imperial&appid='+KEY;
 
         fetch (requestUrl)
             .then(function (response){
