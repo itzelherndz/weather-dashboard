@@ -2,21 +2,22 @@
     --color-1:#2b8b7f;
     --color-2:#dfb228;
     --color-3:#f2e0a9;
-    --color-4:#fff0db;
-    --color-5:#ffff;
+    --color-4:#ffff;
 }
 
 body{
     background-color:var(--color-3);
 }
 
+/* customizes header */
 .custom-heading{
     border-bottom:2vh solid var(--color-2);
     background-color:var(--color-1);
     /* text properties */
-    color: var(--color-5);
+    color: var(--color-4);
 }
 
+/* adds spacing between search history buttons */
 .custom-button{
     margin:1vh 0;
 }
