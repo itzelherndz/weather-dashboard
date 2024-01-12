@@ -1,4 +1,4 @@
-const apiKey= config.apiKey;
+const apiKey= vars.API_KEY;
 $(function (){
 
     // Document Variables
