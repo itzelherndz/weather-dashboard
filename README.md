@@ -10,6 +10,8 @@ N/A
 
 ## Usage
 
+Weather Dashboard Link: https://itzelherndz.github.io/weather-dashboard
+
 Users can use this application to access weather data through filling out a query on the search bar. Additionally, the users can click on a city from the search history to access the weather data as well. These features are shown on the figure below. 
 
 ![Screen Recording](/assets/images/screen-recording.gif)
