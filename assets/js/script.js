@@ -1,4 +1,4 @@
-const apiKey= vars.API_KEY;
+const apiKey= '4a3078e250edd66b3fd95a4671c5608b';
 $(function (){
 
     // Document Variables
